@@ -1,0 +1,48 @@
+// Variables Bootstrap 4
+
+$red:     #cc2eaa;
+$green:   #2ecc71;
+
+//Color
+$color: #999;
+$accentColor: #4985FF;
+$lightColor: #fff;
+$darkColor: #000;
+$titleColor: #323232;
+$backgroundColor: #f6f6f8;
+
+.color {
+    &--light {
+        color: $lightColor !important;
+    }
+    &--accent {
+        color: $accentColor !important;
+    }
+}
+
+//Font Size
+$font: 10px;
+$fontSize: 1.6rem;
+$fontLittle: 1.4rem;
+$fontMiddle: 1.8rem;
+$fontBig: 3.6rem;
+$fontTitle: 4.8rem;
+
+//Font Weight
+$fontMedium: 500;
+$fontSemiBold: 600;
+$fontBold: 700;
+$fontExtraBold: 800;
+
+//Font Family
+$fontFamily: 'Montserrat', sans-serif;
+
+//Line Height
+$lineHeight: 20px; 
+$lineHeightMedium: 22px;
+$lineHeightBig: 25px;
+$lineHeightSubTitle: 53px;
+$lineHeightTitle: 64px;
+
+//Transition
+$transition: 0.2s all linear;

@@ -1,0 +1,223 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	overflow-x: hidden;
+	font-size: $font;
+	scroll-behavior: smooth;
+}
+body {
+	color: $color;
+	font-size: $fontSize;
+	font-family: $fontFamily;
+	line-height: $lineHeight;
+}
+a {
+	color: $accentColor !important;
+	font-weight: $fontMedium !important;
+	cursor: pointer;
+	transition: $transition;
+	text-decoration: underline;
+	&:hover {
+		text-decoration: none;
+		color: $lightColor !important;
+		background-color: $accentColor;
+	}
+	&:visited {
+		color: $color;
+	}
+}
+
+//Global
+.btns {
+	width: 200px;
+	height: 45px;
+	background-color: $accentColor;
+	color: $lightColor;
+	cursor: pointer;
+	transition: $transition;
+	font-size: $fontSize;
+	font-weight: $fontMedium;
+	line-height: $lineHeight;
+	border: 1px solid $accentColor;
+	box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+	border-radius: 30px;
+	&:hover {
+		color: $accentColor;
+		background-color: $lightColor;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+.section {
+	padding: 50px 0;
+	&__line {
+		border: 1px solid #E0E0E0;
+		margin: 85px 0;
+	}
+	&__bg {
+		background-color: $backgroundColor;
+		&__double {
+			background-image: linear-gradient(90deg, #504DC2 20.44%, #5F12D0 80.91%);
+			background-repeat: no-repeat;
+			background-size: 100% 40%;
+			&--img {
+				background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/header.jpg);
+				background-repeat: no-repeat;
+				background-size: 100% 60%;
+			}
+		}
+	}
+}
+.subtitle {
+	font-size: $fontBig;
+	font-weight: $fontBold;
+	line-height: $lineHeightSubTitle;
+	color: $titleColor;
+	&--form {
+		font-size: $fontMiddle;
+	}
+	&__text {
+		line-height: $lineHeightBig;
+		margin-top: 50px;
+		margin-bottom: 70px;
+		&--small {
+			font-size: $fontLittle;
+		}
+	}
+}
+.svg {
+	display: none;
+}
+//Header
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-weight: $fontMedium;
+	color: $lightColor;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-bottom: 50px;
+	&__title {
+		font-weight: $fontExtraBold;
+		font-size: $fontTitle;
+		line-height: $lineHeightTitle;
+		margin-bottom: 50px;
+	}
+}
+//Services 
+.services {
+	&__item {
+		margin-bottom: 55px;
+		line-height: $lineHeightMedium;
+		&__title {
+			font-weight: $fontBold;
+			color: $darkColor;
+		}
+		&__text {
+			font-size: $fontLittle;
+		}
+		&__icon {
+			border: 1px solid #E0E0E0;
+			border-radius: 50%;
+			padding: 10px;
+			text-align: center;
+			&__inner {
+				border: 1px solid $accentColor;
+				border-radius: 50%;
+				padding: 25px;
+			}
+		}
+	}
+}
+
+//about 
+.about {
+	&__text {
+		margin: 40px 0 30px 0;
+		line-height: $lineHeightBig;
+	}
+	&__img {
+		width: 500px;
+		height: auto;
+		box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+		border-radius: 30px;
+	}
+	&__numbers {
+		font-size: $fontBig;
+		line-height: $lineHeightSubTitle;
+		color: $darkColor;
+	}
+}
+
+//gallery
+.gallery {
+	&__img {
+		width: 350px;
+		height: auto;
+		border-radius: 10px;
+	}
+	&__title {
+		font-size: $fontMiddle;
+		font-weight: $fontBold;
+		line-height: $lineHeightMedium;
+		color: $darkColor;
+		margin: 30px 0;
+	}
+	&__text {
+		line-height: $lineHeightBig;
+		margin: 0 5px 30px 0;
+	}
+}
+
+//projects
+.projects {
+	&__img {
+		border-radius: 10px;
+		width: 255px;
+		height: auto;
+		margin-bottom: 50px;;
+	}
+}
+
+//news
+.news {
+	&__video {
+		box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+		border-radius: 10px;
+	}
+}
+
+//subscribe
+.form-control  {
+	border: 1px solid #F2F2F2;
+	box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+	border-radius: 30px;
+	height: 45px;
+	// position: absolute;
+	// top: 0;
+	// left: 10%;
+	font-size: $fontLittle;
+	padding-left: 30px;
+}
+.btn-outline-secondary {
+	// position: relative;
+	border-radius: 0 30px 30px 0;
+}
+
+//footer 
+.footer {
+	font-size: $fontLittle;
+	& a {
+		color: $color !important;
+		text-decoration: none;
+		transition: $transition;
+		&:hover {
+			background-color: $titleColor;
+			color: $lightColor !important;
+		}
+	}
+}

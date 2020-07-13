@@ -1,0 +1,519 @@
+{
+    "source": "mockoon:1.8.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 10,
+                "name": "Demo users API",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 3008,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "Get all users",
+                        "method": "get",
+                        "endpoint": "users",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n  {\n    \"id\": 1,\n    \"firstname\": \"John\",\n    \"Lastname\": \"Snow\",\n    \"status\": \"Learning things\"\n  },\n  {\n    \"id\": 2,\n    \"firstname\": \"Daenerys\",\n    \"Lastname\": \"Targaryen\",\n    \"status\": \"Riding a dragon\"\n  }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get a user",
+                        "method": "get",
+                        "endpoint": "users/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"id\": 1,\n  \"firstname\": \"John\",\n  \"Lastname\": \"Snow\",\n  \"status\": \"Learning things\"\n}",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "Get userId 1",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "id",
+                                        "value": "1",
+                                        "isRegex": false
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"id\": 2,\n  \"firstname\": \"Daenerys\",\n  \"Lastname\": \"Targaryen\",\n  \"status\": \"Riding a dragon\"\n}",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "Get userId 2",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "id",
+                                        "value": "2",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Create a user",
+                        "method": "post",
+                        "endpoint": "users",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"firstname\": \"{{body 'firstname'}}\",\n  \"lastname\": \"{{body 'lastname'}}\",\n  \"status\": \"{{body 'status'}}\"\n}",
+                                "latency": 0,
+                                "statusCode": "201",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "body",
+                                        "modifier": "firstname",
+                                        "value": ".+",
+                                        "isRegex": true
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"Error\": \"firstname is required\"\n}",
+                                "latency": 0,
+                                "statusCode": "400",
+                                "label": "Missing data",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "body",
+                                        "modifier": "firstname",
+                                        "value": "^$",
+                                        "isRegex": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Delete a user",
+                        "method": "delete",
+                        "endpoint": "users/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "",
+                                "latency": 0,
+                                "statusCode": "204",
+                                "label": "User deleted",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "body",
+                                        "modifier": "firstname",
+                                        "value": ".*",
+                                        "isRegex": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Post",
+                        "method": "post",
+                        "endpoint": "post",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"title\": \"Title 2\",\n      \"text\": \"TextTextTextTextTextTextTextTextTextText\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    },\n    {\n      \"id\": \"2\",\n      \"title\": \"Title 3\",\n      \"text\": \"TextTextTextdsfdsfdsfxtTextTextTextTextText\",\n      \"date\": \"16.06.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Post",
+                        "method": "get",
+                        "endpoint": "post/1",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"title\": \"Title 22\",\n      \"text\": \"TextTextTextTextTextTextTextTextTextText\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    },\n    {\n      \"id\": \"2\",\n      \"title\": \"Title 33\",\n      \"text\": \"TextTextTextdsfdsfdsfxtTextTextTextTextText\",\n      \"date\": \"16.06.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Post",
+                        "method": "get",
+                        "endpoint": "post/2",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"title\": \"Title 88\",\n      \"text\": \"TextTextTextTextTextTextTextTextTextText\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    },\n    {\n      \"id\": \"2\",\n      \"title\": \"Title 66\",\n      \"text\": \"TextTextTextdsfdsfdsfxtTextTextTextTextText\",\n      \"date\": \"16.06.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Post",
+                        "method": "get",
+                        "endpoint": "post/3",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"title\": \"Title 5\",\n      \"text\": \"TextTextTextTextTextTextTextTextTextText\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    },\n    {\n      \"id\": \"2\",\n      \"title\": \"Title 15\",\n      \"text\": \"TextTextTextdsfdsfdsfxtTextTextTextTextText\",\n      \"date\": \"16.06.2020\",\n      \"img\": \"https://q-cf.bstatic.com/images/hotel/max1024x768/192/192861198.jpg\"\n    }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Authors",
+                        "method": "get",
+                        "endpoint": "authors",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"John\",\n    \"surname\": \"Snow\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Daenerys\",\n    \"surname\": \"Targaryen\"\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Arya\",\n    \"surname\": \"Stark\"\n  },\n  {\n    \"id\": 4,\n    \"name\": \"Sansa\",\n    \"surname\": \"Stark\"\n  }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "authors/1",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"John \",\n    \"surname\": \"Snow\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Daenerys \",\n    \"surname\": \"Targaryen\"\n  }\n ]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "authors/2",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n  {\n    \"id\": 3,\n    \"name\": \"Arya \",\n    \"surname\": \"Stark\"\n  },\n  {\n    \"id\": 4,\n    \"name\": \"Sansa \",\n    \"surname\": \"Stark\"\n  }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "cars",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"Dodge\"\n  },\n  {\n    \"id\": 2,\n    \"title\": \"Jaguar\"\n  },\n  {\n    \"id\": 3,\n    \"title\": \"BMW\"\n  },\n  {\n    \"id\": 4,\n    \"title\": \"Volvo\"\n  },\n  {\n    \"id\": 5,\n    \"title\": \"ZAZ\"\n  }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "News",
+                        "method": "get",
+                        "endpoint": "news",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"likes\": \"15\",\n      \"title\": \"Title 1\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"2\",\n      \"likes\": \"25\",\n      \"title\": \"Title 2\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.06.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"3\",\n      \"likes\": \"35\",\n      \"title\": \"Title 3\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"4\",\n      \"likes\": \"45\",\n      \"title\": \"Title 4\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"5\",\n      \"likes\": \"55\",\n      \"title\": \"Title 5\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"6\",\n      \"likes\": \"65\",\n      \"title\": \"Title 6\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"7\",\n      \"likes\": \"75\",\n      \"title\": \"Title 7\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    },\n    {\n      \"id\": \"8\",\n      \"likes\": \"85\",\n      \"title\": \"Title 8\",\n      \"text\": \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint assumenda animi illo eos. Praesentium ducimus ab necessitatibus? Deleniti, nisi rerum recusandae perspiciatis natus neque, dicta ipsa doloribus libero dolore eum?\",\n      \"date\": \"16.04.2020\",\n      \"img\": \"https://tighcaraproperty.com/wp-content/uploads/2010/09/breaking-news.jpg\",\n      \"comment1\": \"Lorem ipsum 1\", \n      \"comment2\": \"Lorem ipsum 2\",\n      \"comment3\": \"Lorem ipsum 3\"\n    }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "News",
+                        "method": "get",
+                        "endpoint": "news/comment",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n\n{\n    \"id\": \"1\",\n    \"comment4\": \"Lorem ipsum 4\", \n    \"comment5\": \"Lorem ipsum 5\",\n    \"comment6\": \"Lorem ipsum 6\" \n},\n{\n    \"id\": \"2\",\n    \"comment4\": \"Lorem ipsum 42\", \n    \"comment5\": \"Lorem ipsum 52\",\n    \"comment6\": \"Lorem ipsum 62\" \n},\n{\n    \"id\": \"3\",\n    \"comment4\": \"Lorem ipsum 43\", \n    \"comment5\": \"Lorem ipsum 53\",\n    \"comment6\": \"Lorem ipsum 63\" \n},\n{\n    \"id\": \"4\",\n    \"comment4\": \"Lorem ipsum 44\", \n    \"comment5\": \"Lorem ipsum 54\",\n    \"comment6\": \"Lorem ipsum 64\" \n},\n{\n    \"id\": \"5\",\n    \"comment4\": \"Lorem ipsum 45\", \n    \"comment5\": \"Lorem ipsum 55\",\n    \"comment6\": \"Lorem ipsum 65\" \n},\n{\n    \"id\": \"6\",\n    \"comment4\": \"Lorem ipsum 46\", \n    \"comment5\": \"Lorem ipsum 56\",\n    \"comment6\": \"Lorem ipsum 66\" \n},\n{\n    \"id\": \"7\",\n    \"comment4\": \"Lorem ipsum 47\", \n    \"comment5\": \"Lorem ipsum 57\",\n    \"comment6\": \"Lorem ipsum 67\" \n},\n{\n    \"id\": \"8\",\n    \"comment4\": \"Lorem ipsum 48\", \n    \"comment5\": \"Lorem ipsum 58\",\n    \"comment6\": \"Lorem ipsum 68\" \n},\n{\n    \"id\": \"9\",\n    \"comment4\": \"Lorem ipsum 49\", \n    \"comment5\": \"Lorem ipsum 59\",\n    \"comment6\": \"Lorem ipsum 69\" \n},\n{\n    \"id\": \"10\",\n    \"comment4\": \"Lorem ipsum 40\", \n    \"comment5\": \"Lorem ipsum 50\",\n    \"comment6\": \"Lorem ipsum 60\" \n},\n{\n    \"id\": \"11\",\n    \"comment4\": \"Lorem ipsum 401\", \n    \"comment5\": \"Lorem ipsum 501\",\n    \"comment6\": \"Lorem ipsum 601\" \n},\n{\n    \"id\": \"12\",\n    \"comment4\": \"Lorem ipsum 402\", \n    \"comment5\": \"Lorem ipsum 502\",\n    \"comment6\": \"Lorem ipsum 602\" \n}\n]\n",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Services",
+                        "method": "get",
+                        "endpoint": "services",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"title\": \"Title 1 Создание сайтов\",\n      \"text\": \"Lorem Ipsum - это текст- рыба, часто используе в печати и вэб-дизайне.\"\n    },\n    {\n      \"id\": \"2\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"title\": \"Title 2 Создание сайтов\",\n      \"text\": \"Lorem Ipsum - это текст- рыба, часто используе в печати и вэб-дизайне.\"\n    },\n    {\n      \"id\": \"3\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"title\": \"Title 3 Создание сайтов\",\n      \"text\": \"Lorem Ipsum - это текст- рыба, часто используе в печати и вэб-дизайне.\"\n    },\n    {\n      \"id\": \"4\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"title\": \"Title 4 Создание сайтов\",\n      \"text\": \"Lorem Ipsum - это текст- рыба, часто используе в печати и вэб-дизайне.\"\n    },\n    {\n      \"id\": \"5\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"title\": \"Title 5 Создание сайтов\",\n      \"text\": \"Lorem Ipsum - это текст- рыба, часто используе в печати и вэб-дизайне.\"\n    },\n    {\n      \"id\": \"6\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"title\": \"Title 6 Создание сайтов\",\n      \"text\": \"Lorem Ipsum - это текст- рыба, часто используе в печати и вэб-дизайне.\"\n    }\n]",
+                                "latency": 50,
+                                "statusCode": "200",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Projects",
+                        "method": "get",
+                        "endpoint": "projects",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\n    {\n      \"id\": \"1\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"srs\": \"https://www.google.com/\"\n    },\n    {\n      \"id\": \"2\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"srs\": \"https://www.google.com/\"\n    },\n    {\n      \"id\": \"3\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"srs\": \"https://www.google.com/\"\n    },\n    {\n      \"id\": \"4\",\n     \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"srs\": \"https://www.google.com/\"\n    },\n    {\n      \"id\": \"5\",\n     \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"srs\": \"https://www.google.com/\"\n    },\n    {\n      \"id\": \"6\",\n      \"img\": \"https://i.pinimg.com/originals/cc/62/20/cc6220f5a31e9004d44a732b324afe3a.jpg\",\n      \"srs\": \"https://www.google.com/\"\n    }\n]",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Origin",
+                        "value": "*"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Methods",
+                        "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Headers",
+                        "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}
